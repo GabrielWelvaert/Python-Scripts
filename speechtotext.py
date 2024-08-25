@@ -1,37 +1,52 @@
-import speech_recognition as sr 
+import speech_recognition as sr
+import os
 
-#list of .wav files in same directory as this file:
-coach = ['file1.wav', 'file2.wav']
+class SpeechToText:
+    def process(self):
 
-#wiping data from output.txt
-open('output.txt','w').close() 
+        absoluteFilePath = input("Enter absolute filepath of directory containing files for translation: ")
+        open('output.txt','w').close()
 
-success = 0
-failure = 0
+        success = 0
+        failure = 0
 
-#each audio file gets its own line in output.txt:
-for file in coach:
-
-    with sr.AudioFile(file) as source:
-        audio = sr.Recognizer().record(source)
-
-    with open('output.txt', 'a') as f:
-
-        #translating audio file to text
+        # Iterate over the files
         try:
-            f.write(f"{sr.Recognizer().recognize_google(audio)} = {file}\n")
-            success += 1
-            print(f"file {coach.index(file)+1}/{len(coach)} read successfully by google")
+            files = os.listdir(absoluteFilePath)
+        except Exception  as e:
+            print(f'Error: {e}')
+            exit(1)
 
-        #uninterpretable audio files are matched with "ERROR"; occurs for things like screaming or grunting
-        except sr.UnknownValueError:
-            f.write(f"ERROR = {file}\n")
-            failure += 1
-            print(f"file {coach.index(file)+1}/{len(coach)} read unsuccessfully by google")
+        for file in files:
 
-    f.close()
+            absoluteFile = os.path.join(absoluteFilePath, file)
+
+            with sr.AudioFile(absoluteFile) as source:
+                audio = sr.Recognizer().record(source)
+
+            with open('output.txt', 'a') as f:
+
+                #translating audio file to text
+                try:
+                    f.write(f"{sr.Recognizer().recognize_google(audio)} = {file}\n")
+                    success += 1
+                    print(f'{file} translated "successfully" by google')
+
+                #uninterpretable audio files are matched with "ERROR"; occurs for things like screaming or grunting
+                except sr.UnknownValueError:
+                    f.write(f"ERROR = {file}\n")
+                    failure += 1
+                    print(f'{file} translated "unsuccessfully" by google')
+
+            f.close()
+
+        successrate = ((len(files)-failure)/len(files))*100
+        if success == failure == 0:
+            successrate = 0
+
+        print(f"Task complete with {success} files translated ({successrate}% success rate). See output.txt for full translation.")
 
 
-print(f"Task complete with {success} files translated ({((len(coach)-failure)/len(coach))*100}% success rate)")
-
-
+if __name__ == "__main__":
+    instace = SpeechToText()
+    instace.process()
