@@ -1,6 +1,6 @@
 A few python scripts that I save here incase I need them again!
 
-**sh1coin.py:**
+_**sh1coin.py:**_
 
   ● text-file-based blockchain cryptocurrency completed for a univesity project:
   
@@ -11,20 +11,20 @@ A few python scripts that I save here incase I need them again!
   ● Designed a mempool system to manage pending transactions, facilitating efficient transaction processing and confirmation.
 
 
-**cookiedough.py:**
+_**cookiedough.py:**_
 
   ● used for making cookies, in real life
 
 
-**frequency.py:**
+_**frequency.py:**_
 
   ● calculates frequency, using numpy and pandas
 
 
-**speechtotext.py:**
+_**speechtotext.py:**_
 
   ● A useful cmd-line program for translating voice audio to text utilizing the SpeechRecognition library
 
-**numlines.py:**
+_**numlines.py:**_
 
   ● recursively counts the number of lines in a directory (including subdirectories)
