@@ -1,4 +1,4 @@
-A few python scripts that I save here incase I need them again!
+A few python scripts that are saved here incase I need them again!
 
 _**sh1coin.py:**_
 
