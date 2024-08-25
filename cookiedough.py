@@ -1,5 +1,4 @@
-#cookie dough ratio when given a specific amount of butter, in grams:
-def fromButter():
+def cookie():
 
     # parse ingredient type
     ingredient = ""
@@ -37,5 +36,5 @@ def fromButter():
         print(f'{x}: {y}')
 
 if __name__ == '__main__':
-    fromButter()
+    cookie()
 
