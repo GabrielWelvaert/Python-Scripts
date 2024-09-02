@@ -15,6 +15,10 @@ _**cookiedough.py:**_
 
   ● used for making cookies, in real life
 
+_**imageMod.py:**_
+
+● resizes all images in current directory
+
 
 _**frequency.py:**_
 
